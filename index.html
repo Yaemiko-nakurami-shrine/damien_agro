@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Agro Sakura</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Segoe UI',sans-serif;
+}
+
+body{
+    background: linear-gradient(135deg,#fff5f8,#ffe7ef);
+    color:#3b2a35;
+}
+
+header{
+    background: rgba(255,255,255,0.85);
+    backdrop-filter: blur(10px);
+    position: fixed;
+    width:100%;
+    top:0;
+    padding:20px 8%;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    box-shadow:0 2px 15px rgba(0,0,0,.08);
+}
+
+.logo{
+    font-size:28px;
+    font-weight:700;
+    color:#d65b91;
+}
+
+nav a{
+    text-decoration:none;
+    color:#5b3d4a;
+    margin-left:25px;
+    font-weight:600;
+}
+
+.hero{
+    min-height:100vh;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    padding:120px 10%;
+}
+
+.hero-content h1{
+    font-size:4rem;
+    color:#c84f88;
+}
+
+.hero-content p{
+    margin:20px auto;
+    max-width:700px;
+    font-size:1.2rem;
+}
+
+.btn{
+    display:inline-block;
+    padding:15px 35px;
+    background:#d65b91;
+    color:white;
+    text-decoration:none;
+    border-radius:40px;
+    transition:.3s;
+}
+
+.btn:hover{
+    background:#b53f73;
+    transform:translateY(-3px);
+}
+
+.section{
+    padding:100px 10%;
+}
+
+.cards{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+    gap:25px;
+    margin-top:40px;
+}
+
+.card{
+    background:white;
+    padding:30px;
+    border-radius:20px;
+    box-shadow:0 5px 20px rgba(0,0,0,.08);
+    border-top:5px solid #d65b91;
+}
+
+.card h3{
+    margin-bottom:15px;
+    color:#c84f88;
+}
+
+footer{
+    text-align:center;
+    padding:40px;
+    background:#f9dce8;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <div class="logo">🌸 Agro Sakura</div>
+
+    <nav>
+        <a href="#sobre">Sobre</a>
+        <a href="#servicos">Serviços</a>
+        <a href="#contato">Contato</a>
+    </nav>
+</header>
+
+<section class="hero">
+    <div class="hero-content">
+        <h1>Elegância e Tecnologia no Campo</h1>
+        <p>
+            Soluções modernas para produtores rurais, combinando inovação,
+            produtividade e sustentabilidade.
+        </p>
+
+        <a href="#contato" class="btn">
+            Solicitar Consultoria
+        </a>
+    </div>
+</section>
+
+<section class="section" id="sobre">
+    <h2>Sobre Nós</h2>
+    <p>
+        Somos especialistas em agronegócio, gestão agrícola,
+        tecnologia para fazendas e otimização de produção.
+    </p>
+</section>
+
+<section class="section" id="servicos">
+    <h2>Nossos Serviços</h2>
+
+    <div class="cards">
+
+        <div class="card">
+            <h3>🌱 Agricultura Inteligente</h3>
+            <p>Monitoramento e análise de produção.</p>
+        </div>
+
+        <div class="card">
+            <h3>🚜 Gestão Rural</h3>
+            <p>Controle financeiro e operacional.</p>
+        </div>
+
+        <div class="card">
+            <h3>📈 Consultoria Estratégica</h3>
+            <p>Aumento de produtividade e lucro.</p>
+        </div>
+
+    </div>
+</section>
+
+<section class="section" id="contato">
+    <h2>Contato</h2>
+    <p>Email: damien.brito@escola.pr.gov.br</p>
+    <p>WhatsApp: +55 (43) 43 98833-6058</p>
+</section>
+
+<footer>
+    © 2026 Agro Yae miko • 無断転載を禁じます
+</footer>
+
+</body>
+</html>
