@@ -3,100 +3,134 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Agro Sakura</title>
+<title>Yae Agro - Agronegócios Premium</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
 
-<style>
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-    font-family:'Segoe UI',sans-serif;
-}
+<!-- Header -->
+<header>
+    <div class="logo">
+        <span class="logo-icon">✦</span> Yae Agro
+    </div>
+    <nav>
+        <a href="#inicio">Início</a>
+        <a href="#servicos">Serviços</a>
+        <a href="#sobre">Sobre</a>
+        <a href="#contato">Contato</a>
+    </nav>
+</header>
 
-body{
-    background: linear-gradient(135deg,#fff5f8,#ffe7ef);
-    color:#3b2a35;
-}
+<!-- Hero Section -->
+<section id="inicio" class="hero">
+    <div class="hero-content">
+        <div class="hero-decoration">✦</div>
+        <h1>Yae Agro</h1>
+        <p class="hero-subtitle">Elegância e Prosperidade no Agronegócio</p>
+        <p class="hero-description">
+            Cultive sucesso com sabedoria ancestral e tecnologia moderna. 
+            Nós transformamos suas terras em riqueza sustentável.
+        </p>
+        <button class="btn btn-primary">Comece Agora</button>
+        <button class="btn btn-secondary">Saiba Mais</button>
+    </div>
+    <div class="hero-image">
+        <img src="https://i.pinimg.com/736x/c2/14/60/c214605d606fe9657529e8a81187d39a.jpg" alt="Yae Miko">
+    </div>
+</section>
 
-header{
-    background: rgba(255,255,255,0.85);
-    backdrop-filter: blur(10px);
-    position: fixed;
-    width:100%;
-    top:0;
-    padding:20px 8%;
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    box-shadow:0 2px 15px rgba(0,0,0,.08);
-}
+<!-- Services Section -->
+<section id="servicos" class="section section-services">
+    <div class="section-title">
+        <h2>Nossos Serviços</h2>
+        <div class="title-line"></div>
+    </div>
+    
+    <div class="services-grid">
+        <div class="service-card">
+            <div class="service-icon">🌾</div>
+            <h3>Consultoria Agrícola</h3>
+            <p>Estratégias personalizadas para maximizar sua produção com sustentabilidade.</p>
+        </div>
+        
+        <div class="service-card">
+            <div class="service-icon">💎</div>
+            <h3>Gestão de Propriedade</h3>
+            <p>Administração completa de suas terras com eficiência e elegância.</p>
+        </div>
+        
+        <div class="service-card">
+            <div class="service-icon">📊</div>
+            <h3>Análise de Mercado</h3>
+            <p>Dados precisos para decisões inteligentes no agronegócio.</p>
+        </div>
+        
+        <div class="service-card">
+            <div class="service-icon">🌱</div>
+            <h3>Sustentabilidade</h3>
+            <p>Práticas modernas que respeitam a natureza e aumentam lucratividade.</p>
+        </div>
+    </div>
+</section>
 
-.logo{
-    font-size:28px;
-    font-weight:700;
-    color:#d65b91;
-}
+<!-- About Section -->
+<section id="sobre" class="section section-about">
+    <div class="about-image">
+        <img src="https://api.ambr.top/assets/UI/character/Yae%20Miko/side.webp" alt="Yae Miko Premium">
+    </div>
+    <div class="about-content">
+        <div class="about-text">
+            <h2>Sobre Yae Agro</h2>
+            <p>
+                Com mais de uma década de experiência, Yae Agro representa a fusão perfeita entre 
+                tradição oriental e inovação agrícola moderna. Nossa missão é elevar o agronegócio 
+                a um novo patamar de sofisticação e prosperidade.
+            </p>
+            <div class="stats">
+                <div class="stat">
+                    <strong>500+</strong>
+                    <span>Propriedades</span>
+                </div>
+                <div class="stat">
+                    <strong>98%</strong>
+                    <span>Satisfação</span>
+                </div>
+                <div class="stat">
+                    <strong>15k+</strong>
+                    <span>Hectares</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
 
-nav a{
-    text-decoration:none;
-    color:#5b3d4a;
-    margin-left:25px;
-    font-weight:600;
-}
+<!-- Contact Section -->
+<section id="contato" class="section section-contact">
+    <div class="contact-content">
+        <h2>Entre em Contato</h2>
+        <p>Sua prosperidade é nossa prioridade</p>
+        
+        <div class="contact-methods">
+            <div class="contact-item">
+                <span class="contact-icon">📧</span>
+                <a href="mailto:contato@yaeagro.com">contato@yaeagro.com</a>
+            </div>
+            <div class="contact-item">
+                <span class="contact-icon">📱</span>
+                <a href="tel:+5511999999999">(11) 99999-9999</a>
+            </div>
+            <div class="contact-item">
+                <span class="contact-icon">📍</span>
+                <p>São Paulo, Brasil</p>
+            </div>
+        </div>
+    </div>
+</section>
 
-.hero{
-    min-height:100vh;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    text-align:center;
-    padding:120px 10%;
-}
-
-.hero-content h1{
-    font-size:4rem;
-    color:#c84f88;
-}
-
-.hero-content p{
-    margin:20px auto;
-    max-width:700px;
-    font-size:1.2rem;
-}
-
-.btn{
-    display:inline-block;
-    padding:15px 35px;
-    background:#d65b91;
-    color:white;
-    text-decoration:none;
-    border-radius:40px;
-    transition:.3s;
-}
-
-.btn:hover{
-    background:#b53f73;
-    transform:translateY(-3px);
-}
-
-.section{
-    padding:100px 10%;
-}
-
-.cards{
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-    gap:25px;
-    margin-top:40px;
-}
-
-.card{
-    background:white;
-    padding:30px;
-    border-radius:20px;
-    box-shadow:0 5px 20px rgba(0,0,0,.08);
-    border-top:5px solid #d65b91;
-}
+<!-- Footer -->
+<footer>
+    <p>&copy; 2026 Yae Agro. Todos os direitos reservados. ✦</p>
+</footer>
 
 .card h3{
     margin-bottom:15px;
