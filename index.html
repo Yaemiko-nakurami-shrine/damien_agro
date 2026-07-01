@@ -3,267 +3,745 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sakura Agro - Concurso de Agronegócios</title>
-    <meta name="description" content="Sakura Agro — Concurso de agronegócios com espírito oriental: inscrições, categorias, prêmios e cronograma.">
-    <link rel="stylesheet" href="style.css">
-    <script src="script.js" defer></script>
+    <title>Sakura Agro — Concurso de Agronegócios Místicos</title>
+    <meta name="description" content="Sakura Agro — Concurso de agronegócios com espírito de Inazuma: inscrições, categorias, prêmios e cronograma sustentável.">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700;900&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+    <style>
+        /* ==========================================================================
+           🎨 PALETA DE CORES DA YAE MIKO & VARIÁVEIS DO SISTEMA
+           ========================================================================== */
+        :root {
+            --sakura-pink: #fbc4d8;       /* Rosa pétala suave */
+            --yae-crimson: #a62b41;       /* Vermelho das vestes de miko */
+            --electro-purple: #2a1a24;    /* Roxo escuro místico */
+            --wheat-gold: #e5b869;        /* Dourado celestial (trigo/detalhes) */
+            --bg-light: #fffcf9;          /* Fundo pergaminho limpo */
+            --card-shadow: 0 8px 30px rgba(166, 43, 65, 0.08);
+            --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+        }
+
+        /* Base & Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--bg-light);
+            color: var(--electro-purple);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* ==========================================================================
+           🌟 COMPONENTES GLOBAIS REUTILIZÁVEIS
+           ========================================================================== */
+        .section {
+            padding: 80px 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+        .section-title h2 {
+            font-family: 'Cinzel', serif;
+            font-size: 2.5rem;
+            color: var(--yae-crimson);
+            letter-spacing: 2px;
+        }
+        .title-line {
+            width: 80px;
+            height: 3px;
+            background: linear-gradient(90deg, transparent, var(--wheat-gold), transparent);
+            margin: 10px auto;
+        }
+        .section-subtitle {
+            font-style: italic;
+            color: #7a6673;
+            font-size: 1rem;
+        }
+        .btn {
+            display: inline-block;
+            padding: 12px 30px;
+            font-weight: 600;
+            letter-spacing: 1px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: var(--transition);
+            font-family: 'Poppins', sans-serif;
+            text-transform: uppercase;
+            font-size: 0.85rem;
+        }
+        .btn-primary {
+            background-color: var(--yae-crimson);
+            color: white;
+            box-shadow: 0 4px 15px rgba(166, 43, 65, 0.3);
+        }
+        .btn-primary:hover {
+            background-color: #822031;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(166, 43, 65, 0.4);
+        }
+        .btn-secondary {
+            background-color: transparent;
+            color: var(--yae-crimson);
+            border: 2px solid var(--yae-crimson);
+            margin-left: 15px;
+        }
+        .btn-secondary:hover {
+            background-color: rgba(166, 43, 65, 0.05);
+            transform: translateY(-2px);
+        }
+
+        /* Torii Border Line (Divisor Temático) */
+        .torii-gate-divider {
+            height: 6px;
+            background: linear-gradient(90deg, transparent, var(--yae-crimson) 20%, var(--wheat-gold) 50%, var(--yae-crimson) 80%, transparent);
+            opacity: 0.4;
+            margin: 20px 0;
+        }
+
+        /* ==========================================================================
+           ⛩️ HEADER & NAVIGATION
+           ========================================================================== */
+        header {
+            background-color: rgba(255, 252, 249, 0.95);
+            backdrop-filter: blur(10px);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 5%;
+            box-shadow: 0 2px 20px rgba(0,0,0,0.03);
+            border-bottom: 1px solid rgba(24bc4d8, 0.3);
+        }
+        .logo {
+            font-family: 'Cinzel', serif;
+            font-size: 1.5rem;
+            font-weight: 900;
+            color: var(--yae-crimson);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        nav {
+            display: flex;
+            gap: 25px;
+        }
+        nav a {
+            text-decoration: none;
+            color: var(--electro-purple);
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: var(--transition);
+            position: relative;
+        }
+        nav a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 0;
+            background-color: var(--yae-crimson);
+            transition: var(--transition);
+        }
+        nav a:hover {
+            color: var(--yae-crimson);
+        }
+        nav a:hover::after {
+            width: 100%;
+        }
+
+        /* ==========================================================================
+           🌸 HERO SECTION
+           ========================================================================== */
+        .hero {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 50px;
+            min-height: calc(100vh - 80px);
+            background: radial-gradient(circle at 80% 20%, rgba(251, 196, 216, 0.25) 0%, transparent 50%);
+        }
+        .hero-content {
+            flex: 1;
+            max-width: 600px;
+        }
+        .hero-decoration {
+            color: var(--wheat-gold);
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+        }
+        .hero h1 {
+            font-family: 'Cinzel', serif;
+            font-size: 4rem;
+            line-height: 1.1;
+            color: var(--electro-purple);
+            margin-bottom: 10px;
+        }
+        .hero-subtitle {
+            font-family: 'Cinzel', serif;
+            font-size: 1.4rem;
+            color: var(--yae-crimson);
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+        .hero-description {
+            font-size: 1.1rem;
+            color: #554450;
+            margin-bottom: 35px;
+        }
+        .hero-image {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            position: relative;
+        }
+        .hero-image img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(42, 26, 36, 0.15);
+            border: 3px solid white;
+            outline: 1px solid var(--sakura-pink);
+            transition: var(--transition);
+        }
+        .hero-image:hover img {
+            transform: scale(1.02);
+        }
+
+        /* ==========================================================================
+           🌾 CATEGORIES SECTION
+           ========================================================================== */
+        .categories-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+        .category-card {
+            background: white;
+            border-radius: 12px;
+            padding: 35px 25px;
+            text-align: center;
+            box-shadow: var(--card-shadow);
+            border: 1px solid rgba(251, 196, 216, 0.2);
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+        }
+        .category-card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 4px;
+            background: linear-gradient(90deg, var(--sakura-pink), var(--yae-crimson));
+            opacity: 0;
+            transition: var(--transition);
+        }
+        .category-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 35px rgba(166, 43, 65, 0.15);
+        }
+        .category-card:hover::before {
+            opacity: 1;
+        }
+        .category-icon {
+            font-size: 3rem;
+            margin-bottom: 15px;
+            display: inline-block;
+        }
+        .category-card h3 {
+            font-family: 'Cinzel', serif;
+            color: var(--electro-purple);
+            margin-bottom: 12px;
+            font-size: 1.25rem;
+        }
+        .category-card p {
+            font-size: 0.9rem;
+            color: #665561;
+            margin-bottom: 20px;
+        }
+        .category-badge {
+            background-color: rgba(251, 196, 216, 0.3);
+            color: var(--yae-crimson);
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+
+        /* ==========================================================================
+           🥇 PRIZES SECTION
+           ========================================================================== */
+        .prizes-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            align-items: center;
+        }
+        .prize-card {
+            background: white;
+            border-radius: 16px;
+            padding: 40px 30px;
+            text-align: center;
+            box-shadow: var(--card-shadow);
+            border: 2px solid transparent;
+            transition: var(--transition);
+        }
+        .prize-gold {
+            border-color: var(--wheat-gold);
+            background: linear-gradient(180deg, #fffbee 0%, #white 100%);
+            transform: scale(1.05);
+        }
+        .prize-rank {
+            font-family: 'Cinzel', serif;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 10px;
+            color: #887783;
+        }
+        .prize-gold .prize-rank { color: #b08530; }
+        .prize-icon {
+            font-size: 4rem;
+            margin-bottom: 15px;
+        }
+        .prize-card h3 {
+            font-family: 'Cinzel', serif;
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+        }
+        .prize-list {
+            list-style: none;
+            text-align: left;
+            display: inline-block;
+        }
+        .prize-list li {
+            margin-bottom: 10px;
+            font-size: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .prize-list li::before {
+            content: '✦';
+            color: var(--yae-crimson);
+        }
+
+        /* ==========================================================================
+           📜 RULES SECTION
+           ========================================================================== */
+        .rules-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
+            gap: 40px;
+        }
+        .rule-item {
+            display: flex;
+            gap: 20px;
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.02);
+        }
+        .rule-number {
+            font-family: 'Cinzel', serif;
+            color: var(--yae-crimson);
+            font-weight: 900;
+            font-size: 1.2rem;
+            white-space: nowrap;
+        }
+        .rule-item h3 {
+            font-family: 'Cinzel', serif;
+            font-size: 1.1rem;
+            margin-bottom: 5px;
+            color: var(--electro-purple);
+        }
+        .rule-item p {
+            font-size: 0.9rem;
+            color: #665561;
+        }
+        .rules-note {
+            background-color: #fff0f3;
+            border-left: 4px solid var(--yae-crimson);
+            padding: 20px;
+            border-radius: 0 8px 8px 0;
+            margin-top: 40px;
+        }
+        .rules-note h4 {
+            color: var(--yae-crimson);
+            margin-bottom: 5px;
+        }
+
+        /* ==========================================================================
+           ✍️ REGISTRATION FORM
+           ========================================================================== */
+        .registration-form {
+            max-width: 600px;
+            margin: 0 auto;
+            background: white;
+            padding: 40px;
+            border-radius: 16px;
+            box-shadow: var(--card-shadow);
+            border: 1px solid rgba(166, 43, 65, 0.05);
+        }
+        .form-group {
+            margin-bottom: 20px;
+        }
+        .form-group label {
+            display: block;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 8px;
+            color: var(--electro-purple);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        .form-group input, .form-group select {
+            width: 100%;
+            padding: 12px 15px;
+            border: 2px solid #e1dbdf;
+            border-radius: 6px;
+            font-family: 'Poppins', sans-serif;
+            font-size: 0.95rem;
+            transition: var(--transition);
+            background-color: #fffdfd;
+        }
+        .form-group input:focus, .form-group select:focus {
+            outline: none;
+            border-color: var(--yae-crimson);
+            box-shadow: 0 0 0 3px rgba(166, 43, 65, 0.1);
+            background-color: white;
+        }
+        .btn-submit {
+            width: 100%;
+            padding: 15px;
+            font-size: 1rem;
+        }
+
+        /* ==========================================================================
+           🤝 SPONSORS
+           ========================================================================== */
+        .sponsors-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+            align-items: center;
+            justify-items: center;
+        }
+        .sponsor-item img {
+            max-width: 160px;
+            height: auto;
+            filter: grayscale(100%) opacity(60%);
+            transition: var(--transition);
+        }
+        .sponsor-item:hover img {
+            filter: grayscale(0%) opacity(100%);
+            transform: scale(1.05);
+        }
+
+        /* ==========================================================================
+           📞 CONTACT & FOOTER
+           ========================================================================== */
+        .contact-section {
+            background-color: #2a1a24;
+            color: #f7eff4;
+            text-align: center;
+        }
+        .contact-section .section-title h2 {
+            color: var(--sakura-pink);
+        }
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            flex-wrap: wrap;
+            margin-top: 20px;
+        }
+        .contact-info p {
+            font-size: 1.1rem;
+        }
+        .contact-info a {
+            color: var(--sakura-pink);
+            text-decoration: none;
+            font-weight: 600;
+            transition: var(--transition);
+        }
+        .contact-info a:hover {
+            color: var(--wheat-gold);
+        }
+
+        footer {
+            background-color: #1f121a;
+            color: #a894a1;
+            padding: 30px 20px;
+            text-align: center;
+            font-size: 0.85rem;
+            border-top: 1px solid rgba(251, 196, 216, 0.05);
+        }
+        .footer-tagline {
+            margin-top: 5px;
+            font-style: italic;
+            color: #705b6a;
+        }
+
+        /* Responsividade Básica */
+        @media (max-width: 768px) {
+            header { flex-direction: column; gap: 15px; }
+            .hero { flex-direction: column; text-align: center; padding-top: 40px; }
+            .hero h1 { font-size: 2.8rem; }
+            .btn-secondary { margin-left: 0; margin-top: 10px; display: block; }
+            .rules-grid { grid-template-columns: 1fr; }
+            .prize-gold { transform: scale(1); }
+        }
+    </style>
 </head>
 <body>
 
-<!-- Header -->
 <header>
     <div class="logo">
-        <span class="logo-icon">🌸</span> 🌸Sakura Agro🌸
+        <span>🌸</span> Sakura Agro
     </div>
-    <nav>
+    <nav aria-label="Navegação Principal">
         <a href="#inicio">Início</a>
         <a href="#categorias">Categorias</a>
         <a href="#premios">Prêmios</a>
         <a href="#regras">Regras</a>
         <a href="#inscricao">Inscrição</a>
-        <a href="sponsors.html">Patrocinadores</a>
     </nav>
 </header>
 
-<!-- Hero -->
-<section id="inicio" class="hero">
-    <div class="hero-ornament left">✦ ✧ ✦</div>
-    <div class="hero-content">
-        <div class="hero-decoration">✦</div>
-        <h1>Sakura Agro</h1>
-        <p class="hero-subtitle">Concurso Sakura de Agronegócios</p>
-        <p class="hero-description">Participe do concurso que une tradição, sustentabilidade e inovação no campo. Inscreva seu projeto e conquiste prêmios místicos.</p>
-        <div class="hero-buttons">
-            <button class="btn btn-primary" onclick="document.getElementById('inscricao').scrollIntoView({behavior: 'smooth'})">Inscrever-se</button>
-            <button class="btn btn-secondary" onclick="document.getElementById('regras').scrollIntoView({behavior: 'smooth'})">Regras</button>
+<main>
+    <section id="inicio" class="section hero">
+        <div class="hero-content">
+            <div class="hero-decoration">✦ ✧ ✦</div>
+            <h1>Sakura Agro</h1>
+            <p class="hero-subtitle">Concurso Narukami de Agronegócios</p>
+            <p class="hero-description">Participe da jornada digital que une a tradição mística do campo, preservação ambiental e inovação tecnológica. Inscreva seu projeto inovador em lógica de dados e conquiste prêmios sagrados.</p>
+            <div class="hero-buttons">
+                <button class="btn btn-primary" onclick="document.getElementById('inscricao').scrollIntoView({behavior: 'smooth'})">Inscrever-se</button>
+                <button class="btn btn-secondary" onclick="document.getElementById('regras').scrollIntoView({behavior: 'smooth'})">Ver Regras</button>
+            </div>
         </div>
-    </div>
-    <div class="hero-image">
-        <img src="https://i.pinimg.com/736x/c2/14/60/c214605d606fe9657529e8a81187d39a.jpg" alt="Sakura Guide">
-        <div class="hero-glow"></div>
-    </div>
-    <div class="hero-ornament right">✦ ✧ ✦</div>
-</section>
+        <div class="hero-image">
+            <img src="https://i.pinimg.com/736x/c2/14/60/c214605d606fe9657529e8a81187d39a.jpg" alt="Ilustração da Raposa Guardiã Yae Miko em Inazuma">
+        </div>
+    </section>
 
-<div class="torii-gate" aria-hidden="true"></div>
+    <div class="torii-gate-divider" aria-hidden="true"></div>
 
-<!-- Categories -->
-<section id="categorias" class="section section-categories">
+    <section id="categorias" class="section">
+        <div class="section-title">
+            <h2>Categorias do Concurso</h2>
+            <div class="title-line"></div>
+            <p class="section-subtitle">Escolha seu caminho no ecossistema sustentável</p>
+        </div>
+        <div class="categories-grid">
+            <div class="category-card">
+                <div class="category-icon">🌾</div>
+                <h3>Plantação Sagrada</h3>
+                <p>Lavouras, planejamento inteligente e manejo técnico para produtividade consciente.</p>
+                <span class="category-badge">8-12 anos</span>
+            </div>
+            <div class="category-card">
+                <div class="category-icon">🥬</div>
+                <h3>Horta do Destino</h3>
+                <p>Hortas familiares inovadoras, automação de irrigação e produção local.</p>
+                <span class="category-badge">13-16 anos</span>
+            </div>
+            <div class="category-card">
+                <div class="category-icon">🐝</div>
+                <h3>Harmonia Natural</h3>
+                <p>Projetos de preservação ecológica, polinizadores e saúde do solo.</p>
+                <span class="category-badge">Todas as idades</span>
+            </div>
+            <div class="category-card">
+                <div class="category-icon">🎨</div>
+                <h3>Arte Agrária</h3>
+                <p>Design visual de embalagens sustentáveis e comunicação para pequenas lavouras.</p>
+                <span class="category-badge">Todas as idades</span>
+            </div>
+        </div>
+    </section>
+
+    <div class="torii-gate-divider" aria-hidden="true"></div>
+
+    <section id="premios" class="section">
+        <div class="section-title">
+            <h2>Prêmios Grandiosos</h2>
+            <div class="title-line"></div>
+            <p class="section-subtitle">A recompensa divina para as mentes mais brilhantes</p>
+        </div>
+        <div class="prizes-container">
+            <div class="prize-card">
+                <div class="prize-rank">2º Lugar</div>
+                <div class="prize-icon">🥈</div>
+                <h3>Prata Florescente</h3>
+                <ul class="prize-list">
+                    <li>R$ 3.000 em dinheiro</li>
+                    <li>Troféu de Inazuma</li>
+                    <li>Certificado de Mérito</li>
+                </ul>
+            </div>
+            <div class="prize-card prize-gold">
+                <div class="prize-rank">1º Lugar</div>
+                <div class="prize-icon">🥇</div>
+                <h3>Ouro Celestial</h3>
+                <ul class="prize-list">
+                    <li><strong>R$ 5.000 em dinheiro</strong></li>
+                    <li>Troféu Exclusivo Sakura</li>
+                    <li>Bolsa de Estudos de Tecnologia</li>
+                    <li>Certificado de Honra ao Mérito</li>
+                </ul>
+            </div>
+            <div class="prize-card">
+                <div class="prize-rank">3º Lugar</div>
+                <div class="prize-icon">🥉</div>
+                <h3>Bronze Eterno</h3>
+                <ul class="prize-list">
+                    <li>R$ 1.500 em dinheiro</li>
+                    <li>Medalha de Honra</li>
+                    <li>Certificado de Mérito</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <div class="torii-gate-divider" aria-hidden="true"></div>
+
+    <section id="regras" class="section">
+        <div class="section-title">
+            <h2>Diretrizes da Jornada</h2>
+            <div class="title-line"></div>
+            <p class="section-subtitle">Conheça os regulamentos essenciais do campo</p>
+        </div>
+        <div class="rules-grid">
+            <div class="rule-item">
+                <div class="rule-number">✦ 01</div>
+                <div>
+                    <h3>Elegibilidade</h3>
+                    <p>Estudantes e jovens de 8 a 18 anos completos podem realizar inscrições formais no sistema.</p>
+                </div>
+            </div>
+            <div class="rule-item">
+                <div class="rule-number">✦ 02</div>
+                <div>
+                    <h3>Unicidade</h3>
+                    <p>Cada participante pode submeter apenas UM projeto único focado no agro futuro sustentável.</p>
+                </div>
+            </div>
+            <div class="rule-item">
+                <div class="rule-number">✦ 03</div>
+                <div>
+                    <h3>Documentação</h3>
+                    <p>É obrigatório o envio do relatório de lógica de dados e fotos demonstrativas da lavoura.</p>
+                </div>
+            </div>
+            <div class="rule-item">
+                <div class="rule-number">✦ 04</div>
+                <div>
+                    <h3>Originalidade</h3>
+                    <p>O código e a dinâmica precisam ser autorais. Casos óbvios de plágio desqualificam a equipe.</p>
+                </div>
+            </div>
+        </div>
+        <div class="rules-note">
+            <h4>⚠️ Aviso Importante</h4>
+            <p>O envio oficial dos dados implica aceitação total dos regulamentos deste edital. Os dados enviados são protegidos e confidenciais.</p>
+        </div>
+    </section>
+
+    <div class="torii-gate-divider" aria-hidden="true"></div>
+
+    <section id="inscricao" class="section">
+        <div class="section-title">
+            <h2>Inscreva-se Agora</h2>
+            <div class="title-line"></div>
+            <p class="section-subtitle">Submeta seu projeto inovador ao Grande Santuário</p>
+        </div>
+        <div class="registration-form">
+            <form id="regForm">
+                <div class="form-group">
+                    <label for="name">Nome Completo</label>
+                    <input id="name" type="text" placeholder="Ex: Damien Brito" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Endereço de E-mail</label>
+                    <input id="email" type="email" placeholder="nome@exemplo.com" required>
+                </div>
+                <div class="form-group">
+                    <label for="phone">Telefone / WhatsApp</label>
+                    <input id="phone" type="tel" placeholder="(43) 98833-6058" required>
+                </div>
+                <div class="form-group">
+                    <label for="category">Categoria Alvo</label>
+                    <select id="category" required>
+                        <option value="">Selecione sua categoria mística...</option>
+                        <option value="plantacao">Plantação Sagrada (8-12 anos)</option>
+                        <option value="horta">Horta do Destino (13-16 anos)</option>
+                        <option value="harmonia">Harmonia Natural (Todas as idades)</option>
+                        <option value="arte">Arte Agrária (Todas as idades)</option>
+                    </select>
+                </div>
+                <button type="submit" class="btn btn-primary btn-submit">Enviar Inscrição Sagrada</button>
+            </form>
+        </div>
+    </section>
+
+    <div class="torii-gate-divider" aria-hidden="true"></div>
+
+    <section id="patrocinadores" class="section">
+        <div class="section-title">
+            <h2>Patrocinadores Oficiais</h2>
+            <div class="title-line"></div>
+            <p class="section-subtitle">Grandes nações que apoiam o agro sustentável</p>
+        </div>
+        <div class="sponsors-grid">
+            <div class="sponsor-item"><img src="https://i.pinimg.com/1200x/a7/0e/d1/a70ed110e1bf7dfa4d4fc2fdf993f224.jpg" alt="Logo corporativo Sumeru Corp"></div>
+            <div class="sponsor-item"><img src="https://i.pinimg.com/1200x/1a/83/44/1a834451428a2a9a64dd403f55b60fff.jpg" alt="Selo governamental Fontaine"></div>
+            <div class="sponsor-item"><img src="https://i.pinimg.com/1200x/59/bc/20/59bc202d70ffbcce780dacec25b6aa6b.jpg" alt="Emblema Oficial Narukami Shrine"></div>
+            <div class="sponsor-item"><img src="https://i.pinimg.com/1200x/6c/08/5d/6c085d17c82d0648b379d2c2f9f235dd.jpg" alt="Selo comercial Liyue Harbor"></div>
+        </div>
+    </section>
+</main>
+
+<section class="section contact-section" id="contato">
     <div class="section-title">
-        <h2>Categorias do Concurso</h2>
-        <div class="title-line"></div>
-        <p class="section-subtitle">Escolha seu caminho místico</p>
-    </div>
-    <div class="categories-grid">
-        <div class="category-card">
-            <div class="category-icon">🌾</div>
-            <h3>Plantação Sagrada</h3>
-            <p>Lavouras, planejamento e manejo para produtividade e beleza.</p>
-            <span class="category-badge">8-12 anos</span>
-        </div>
-        <div class="category-card">
-            <div class="category-icon">🥬</div>
-            <h3>Horta do Destino</h3>
-            <p>Hortas familiares, técnicas inovadoras e produção local.</p>
-            <span class="category-badge">13-16 anos</span>
-        </div>
-        <div class="category-card">
-            <div class="category-icon">🐝</div>
-            <h3>Harmonia da Natureza</h3>
-            <p>Projetos de sustentabilidade, polinizadores e ecossistemas.</p>
-            <span class="category-badge">Todas as idades</span>
-        </div>
-        <div class="category-card">
-            <div class="category-icon">🎨</div>
-            <h3>Arte Agrária</h3>
-            <p>Design, packaging, e comunicação para produtos rurais.</p>
-            <span class="category-badge">Todas as idades</span>
-        </div>
-    </div>
-</section>
-
-<!-- Prizes -->
-<section id="premios" class="section section-prizes">
-    <div class="section-title">
-        <h2>Prêmios Sakura</h2>
+        <h2>Suporte ao Participante</h2>
         <div class="title-line"></div>
     </div>
-    <div class="prizes-container">
-        <div class="prize-card prize-gold">
-            <div class="prize-rank">1º Lugar</div>
-            <div class="prize-icon">🥇</div>
-            <h3>Ouro Sakura</h3>
-            <ul class="prize-list">
-                <li>R$ 5.000</li>
-                <li>Troféu exclusivo</li>
-                <li>Certificado e bolsa</li>
-            </ul>
-        </div>
-        <div class="prize-card prize-silver">
-            <div class="prize-rank">2º Lugar</div>
-            <div class="prize-icon">🥈</div>
-            <h3>Prata Florescente</h3>
-            <ul class="prize-list">
-                <li>R$ 3.000</li>
-                <li>Troféu</li>
-            </ul>
-        </div>
-        <div class="prize-card prize-bronze">
-            <div class="prize-rank">3º Lugar</div>
-            <div class="prize-icon">🥉</div>
-            <h3>Bronze Eterno</h3>
-            <ul class="prize-list">
-                <li>R$ 1.500</li>
-                <li>Medalha</li>
-            </ul>
-        </div>
+    <div class="contact-info">
+        <p>📧 <strong>E-mail:</strong> <a href="mailto:damien.brito@escola.pr.gov.br">damien.brito@escola.pr.gov.br</a></p>
+        <p>💬 <strong>WhatsApp:</strong> <a href="https://wa.me/5543988336058" target="_blank">+55 (43) 98833-6058</a></p>
     </div>
-</section>
-
-<!-- Rules -->
-<section id="regras" class="section section-rules">
-    <div class="section-title">
-        <h2>Regras do Concurso</h2>
-        <div class="title-line"></div>
-        <p class="section-subtitle">Conheça os princípios da jornada sagrada</p>
-    </div>
-    <div class="rules-container">
-        <div class="rules-column">
-            <div class="rule-item">
-                <div class="rule-number">✦ 1</div>
-                <h3>Elegibilidade</h3>
-                <p>Participantes de 8 a 18 anos podem se inscrever. Maiores de idade precisam de autorização do responsável.</p>
-            </div>
-            <div class="rule-item">
-                <div class="rule-number">✦ 2</div>
-                <h3>Categorias</h3>
-                <p>Cada participante deve escolher apenas UMA categoria. A alteração é permitida até 15 de agosto.</p>
-            </div>
-            <div class="rule-item">
-                <div class="rule-number">✦ 3</div>
-                <h3>Documentação</h3>
-                <p>Envie relatório técnico, fotos do processo e vídeo curto (opcional).</p>
-            </div>
-            <div class="rule-item">
-                <div class="rule-number">✦ 4</div>
-                <h3>Originalidade</h3>
-                <p>Trabalhos devem ser originais. Plágio desqualifica automaticamente.</p>
-            </div>
-        </div>
-        <div class="rules-column">
-            <div class="rule-item">
-                <div class="rule-number">✦ 5</div>
-                <h3>Tamanho do Projeto</h3>
-                <p>Plantações: mínimo 5 m² | Hortas: mínimo 3 m² | Projetos ecológicos sem limite.</p>
-            </div>
-            <div class="rule-item">
-                <div class="rule-number">✦ 6</div>
-                <h3>Técnicas Sustentáveis</h3>
-                <p>Uso de práticas sustentáveis recebe pontuação adicional.</p>
-            </div>
-            <div class="rule-item">
-                <div class="rule-number">✦ 7</div>
-                <h3>Avaliação</h3>
-                <p>Criatividade, execução, impacto ambiental, apresentação e documentação.</p>
-            </div>
-            <div class="rule-item">
-                <div class="rule-number">✦ 8</div>
-                <h3>Resultado</h3>
-                <p>Divulgação em 25 de outubro na cerimônia. Decisão final dos jurados é irrevogável.</p>
-            </div>
-        </div>
-    </div>
-    <div class="rules-note">
-        <h4>⚠️ Importante</h4>
-        <p>A inscrição implica aceitação total das regras. Fotos e vídeos podem ser usados em materiais institucionais.</p>
-    </div>
-</section>
-
-<!-- Jurados -->
-<!-- Jurados removidos conforme solicitado -->
-
-<!-- Gallery -->
-<!-- Galeria removida conforme solicitado -->
-
-<!-- FAQ -->
-<!-- FAQ removido conforme solicitado -->
-
-<!-- Registration -->
-<section id="inscricao" class="section section-registration">
-    <div class="section-title">
-        <h2>Inscreva-se Agora</h2>
-        <div class="title-line"></div>
-        <p class="section-subtitle">Participe da edição Sakura</p>
-    </div>
-    <div class="registration-form">
-        <form id="regForm">
-            <div class="form-group">
-                <input id="name" type="text" placeholder="Nome Completo" required>
-            </div>
-            <div class="form-group">
-                <input id="email" type="email" placeholder="Email" required>
-            </div>
-            <div class="form-group">
-                <input id="phone" type="tel" placeholder="Telefone" required>
-            </div>
-            <div class="form-group">
-                <select id="category" required>
-                    <option value="">Selecione a Categoria</option>
-                    <option value="plantacao">Plantação Sagrada</option>
-                    <option value="horta">Horta do Destino</option>
-                    <option value="harmonia">Harmonia da Natureza</option>
-                    <option value="arte">Arte Agrária</option>
-                </select>
-            </div>
-            <button type="submit" class="btn btn-primary btn-submit">Enviar Inscrição</button>
-            <div id="formMsg" class="form-message" role="status" aria-live="polite"></div>
-        </form>
-    </div>
-</section>
-
-<div class="torii-gate" aria-hidden="true"></div>
-
-<!-- Sponsors -->
-<section id="patrocinadores" class="section section-sponsors">
-    <div class="section-title">
-        <h2>Patrocinadores</h2>
-        <div class="title-line"></div>
-        <p class="section-subtitle">Parceiros de elegância e prosperidade</p>
-    </div>
-    <div class="sponsors-grid">
-        <div class="sponsor-item">
-            <img src="https://i.pinimg.com/1200x/a7/0e/d1/a70ed110e1bf7dfa4d4fc2fdf993f224.jpg" alt="Sumeru Corporation">
-        </div>
-        <div class="sponsor-item sponsor-center">
-            <img src="https://i.pinimg.com/1200x/1a/83/44/1a834451428a2a9a64dd403f55b60fff.jpg" alt="Fontaine Goverment">
-        </div>
-        <div class="sponsor-item">
-            <img src="https://i.pinimg.com/1200x/59/bc/20/59bc202d70ffbcce780dacec25b6aa6b.jpg" alt="Narukami Shrine">
-        </div>
-        <div class="sponsor-item">
-            <img src="https://i.pinimg.com/1200x/6c/08/5d/6c085d17c82d0648b379d2c2f9f235dd.jpg" alt="Liyune harbor">
-        </div>
-    </div>
-</section>
-<footer>
-    <div class="footer-content">
-        <p>&copy; 2026 Sakura Agro. Todos os direitos reservados. 🌸</p>
-        <p class="footer-tagline">Beleza e Prosperidade na Agricultura.</p>
-    </div>
-</footer>
-
-    </div>
-</section>
-
-<section class="section" id="contato">
-    <h2>Contato</h2>
-    <p>Email: damien.brito@escola.pr.gov.br</p>
-    <p>WhatsApp: +55 (43) 43 98833-6058</p>
 </section>
 
 <footer>
-    © 2026 Agro Yae miko • 無断転載を禁じます
+    <p>&copy; 2026 Sakura Agro • Agro Yae Miko. Todos os direitos reservados. 🌸</p>
+    <p class="footer-tagline">Unindo Inteligência Digital, Tradição e Preservação no Campo. 無断転載을 금지합니다</p>
 </footer>
+
+<script>
+    // Script básico para feedback ao simular o envio do formulário
+    document.getElementById('regForm').addEventListener('submit', function(e) {
+        e.preventDefault();
+        alert('🎉 Inscrição enviada com sucesso ao Santuário Narukami! Boa sorte!');
+        this.reset();
+    });
+</script>
 
 </body>
 </html>
